@@ -2,6 +2,12 @@
 
 stringops.js is a collection of string utility functions. It extends the default String object to remain simple and convenient.
 
+##API
+
+String.prototype.**noAccents**(*removeOtherUnicodeCharacters=false*, *replacementCharacter=''*)
+
+String.prototype.**toSlug**(*maxLength=null*, *replacementCharacter='-'*)
+
 ##Examples
 
 The examples below cover the functionality of stringops.js:
