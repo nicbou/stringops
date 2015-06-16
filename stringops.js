@@ -135,4 +135,37 @@
         }
         return slug.toLowerCase();
     };
+
+    String.prototype.repeat = function(count) {
+        if (count < 1) return '';
+        var result = '', pattern = this.valueOf();
+        while (count > 1) {
+            if (count & 1) result += pattern;
+            count >>= 1, pattern += pattern;
+        }
+        return result + pattern;
+    };
+
+    String.prototype.toFileName = function(playItSafe, replacementCharacter){
+        var fileName = this;
+        //Valid on all filesystems, doesn't require escaping in the terminal
+        var cleanCharacters = /[^0-9a-zA-Z-.,;_]/g;
+
+        //Valid on all common filesystems
+        var illegalCharacters = /[\/\?\<\>\\\:\*\|\"\u0000-\u001F]/g, // / ? < > \ : * | " and null byte
+            safeMaxLength = 255; //HFS+, exFAT
+
+        if(playItSafe){
+            replacementCharacter = replacementCharacter || '-';
+            fileName = fileName.noAccents().replace(cleanCharacters, replacementCharacter);
+        }
+        else{
+            replacementCharacter = replacementCharacter || '';
+            fileName = fileName.replace(illegalCharacters, replacementCharacter);
+        }
+
+        fileName = fileName.substring(0, safeMaxLength);
+
+        return fileName;
+    };
 })();
