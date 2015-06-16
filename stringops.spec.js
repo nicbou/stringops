@@ -73,16 +73,16 @@ describe("stringops", function() {
             expect('simple.txt'.toFileName(true).length).toEqual('simple.txt'.length);
             expect(ascii.repeat(100).toFileName(true).length).toEqual(255);
             expect(accents.repeat(100).toFileName(true).length).toEqual(255);
-            expect(unicode.repeat(100).toFileName(true).length).toEqual(255);
+            expect(unicode.repeat(500).toFileName(true).length).toEqual(255);
         });
 
         it('should remove all invalid characters', function(){
             expect('simple.txt'.toFileName(true)).toEqual('simple.txt');
-            expect(ascii.toFileName(true)).toEqual('Strange-women-lyin--in-ponds-distributin--swords-is-no-basis-for-a-system-of-government-');
-            expect(accents.toFileName(true)).toEqual('Voix-ambigue-d-un-coeur-qui-au-zephyr-prefere-les-jattes-de-kiwi');
-            expect(unicode.toFileName(true)).toEqual('-_--------------');
+            expect(ascii.toFileName(true)).toEqual('Strangewomenlyininpondsdistributinswordsisnobasisforasystemofgovernment');
+            expect(accents.toFileName(true)).toEqual('Voixambigueduncoeurquiauzephyrpreferelesjattesdekiwi');
+            expect(unicode.toFileName(true)).toEqual('_');
 
-            expect(invalidFileName.toFileName(true)).toEqual("who-names-files---like-this-seriously--");
+            expect(invalidFileName.toFileName(true)).toEqual("whonamesfileslikethisseriously");
         });
 
         it('should use the correct replacement character', function(){

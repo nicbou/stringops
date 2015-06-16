@@ -4,9 +4,17 @@ stringops.js is a collection of string utility functions. It extends the default
 
 ##API
 
-String.prototype.**noAccents**(*removeOtherUnicodeCharacters=false*, *replacementCharacter=''*)
-
-String.prototype.**toSlug**(*maxLength=null*, *replacementCharacter='-'*)
+* String.prototype.**noAccents**(*removeOtherUnicodeCharacters=false*, *replacementCharacter=""*)
+	* *removeOtherUnicodeCharacters*: whether to remove unicode characters that are not mapped to a non-accented characters. This includes all non-ascii characters.
+	* *replacementCharacter*: the replacement character(s) to use for invalid characters.
+* String.prototype.**repeat**(*times*)
+	* *times*: a positive integer representing the number of times the string should be repeated
+* String.prototype.**toFileName**(*playItSafe=false*, *replacementCharacter=""*)
+	* *playItSafe*: whether to only remove reserved characters or all "non-annoying" characters (`[0-9a-zA-Z-.,;_]`). When set to false, only reserved and non-printable characters are replaced.
+	* *replacementCharacter*: the replacement character(s) to use for invalid characters.
+* String.prototype.**toSlug**(*maxLength=null*, *replacementCharacter="-"*)
+	* *maxLength*: the maximum length of the slug.
+	* *replacementCharacter*: the replacement character(s) to use for invalid characters.
 
 ##Examples
 
@@ -24,6 +32,21 @@ The examples below cover the functionality of stringops.js:
 
 "Voix ambiguë d'un cœur qui au zéphyr préfère les jattes de kiwi".toSlug(10, '_')
 //"voix_ambig"
+
+"Hello".repeat(3)
+//"HelloHelloHello"
+
+""who<names>files\\|/like:this*seriously?\0.txt".toFileName()
+//"whonamesfileslikethisseriously.txt"
+
+""who<names>files\\|/like:this*seriously?\0.txt".toFileName(false, '-')
+//"who-names-files---like-this-seriously--.txt"
+
+"Holiday trip!.ppt".toFileName(true)
+//"Holidaytrip.ppt"
+
+"Holiday trip!.ppt".toFileName(true, '-')
+//"Holiday-trip-.ppt"
 ```
 
 ##Warning

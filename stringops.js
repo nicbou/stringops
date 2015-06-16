@@ -151,16 +151,16 @@
         //Valid on all filesystems, doesn't require escaping in the terminal
         var cleanCharacters = /[^0-9a-zA-Z-.,;_]/g;
 
+        replacementCharacter = replacementCharacter || '';
+
         //Valid on all common filesystems
         var illegalCharacters = /[\/\?\<\>\\\:\*\|\"\u0000-\u001F]/g, // / ? < > \ : * | " and null byte
             safeMaxLength = 255; //HFS+, exFAT
 
         if(playItSafe){
-            replacementCharacter = replacementCharacter || '-';
             fileName = fileName.noAccents().replace(cleanCharacters, replacementCharacter);
         }
         else{
-            replacementCharacter = replacementCharacter || '';
             fileName = fileName.replace(illegalCharacters, replacementCharacter);
         }
 
