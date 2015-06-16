@@ -115,7 +115,7 @@
             return diacriticsMap[ch] || ch;
         });
 
-        replacementCharacter = replacementCharacter || '-';
+        replacementCharacter = replacementCharacter || '';
 
         if(removeOtherUnicodeCharacters){
             withoutAccents = withoutAccents.replace(/[^\u0000-\u007E]/g, replacementCharacter);

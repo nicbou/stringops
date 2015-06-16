@@ -11,10 +11,13 @@ The examples below cover the functionality of stringops.js:
 //"Voix ambigue d'un coeur qui au zephyr prefere les jattes de kiwi"
 
 "Voix ambiguë d'un cœur qui au zéphyr préfère les jattes de kiwi".toSlug()
-// "Voix-ambigue-d-un-coeur-qui-au-zephyr-prefere-les-jattes-de-kiwi"
+// "voix-ambigue-d-un-coeur-qui-au-zephyr-prefere-les-jattes-de-kiwi"
 
 "Voix ambiguë d'un cœur qui au zéphyr préfère les jattes de kiwi".toSlug(10)
-//"Voix-ambig"
+//"voix-ambig"
+
+"Voix ambiguë d'un cœur qui au zéphyr préfère les jattes de kiwi".toSlug(10, '_')
+//"voix_ambig"
 ```
 
 ##Warning
