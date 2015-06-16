@@ -110,16 +110,29 @@
     }
 
     //Replaces accented characters with their non-accented counterparts
-    String.prototype.noAccents = function(){
-        return this.replace(/[^\u0000-\u007E]/g, function(ch){
+    String.prototype.noAccents = function(removeOtherUnicodeCharacters, replacementCharacter){
+        var withoutAccents = this.replace(/[^\u0000-\u007E]/g, function(ch){ //x00-x7E is the ASCII character range
             return diacriticsMap[ch] || ch;
         });
+
+        replacementCharacter = replacementCharacter || '-';
+
+        if(removeOtherUnicodeCharacters){
+            withoutAccents = withoutAccents.replace(/[^\u0000-\u007E]/g, replacementCharacter);
+        }
+
+        return withoutAccents;
     };
 
     //Returns a "slugified" version of a string suitable for URLs and file names
-    String.prototype.toSlug = function(maxLength){
-        var slug = this.noAccents();
-        if(maxLength === undefined) slug = slug.substring(0, maxLength);
-        return slug.replace(/[^a-z0-9]+/ig,'-');
+    String.prototype.toSlug = function(maxLength, replacementCharacter){
+        var slug;
+        replacementCharacter = replacementCharacter || '-';
+        slug = this.noAccents(true, replacementCharacter).trim().replace(/[^a-z0-9-]/ig, replacementCharacter);
+
+        if(maxLength){
+            slug = slug.substring(0, maxLength);
+        }
+        return slug.toLowerCase();
     };
 })();

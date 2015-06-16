@@ -1,0 +1,12 @@
+{
+  "name": "stringops",
+  "version": "1.0.0",
+  "main": "stringops.js",
+  "ignore": [
+    "readme.md"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine": "2.3.4"
+  }
+}
