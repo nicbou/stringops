@@ -2,6 +2,8 @@
 
 stringops.js is a collection of string utility functions. It extends the default String object to remain simple and convenient.
 
+Install the library using `bower install stringops`, and the methods below will become available on any String object. See the *Examples* below for more comprehensive examples.
+
 ##API
 
 * String.prototype.**noAccents**(*removeOtherUnicodeCharacters=false*, *replacementCharacter=""*)
@@ -36,10 +38,10 @@ The examples below cover the functionality of stringops.js:
 "Hello".repeat(3)
 //"HelloHelloHello"
 
-""who<names>files\\|/like:this*seriously?\0.txt".toFileName()
+"who<names>files\\|/like:this*seriously?\0.txt".toFileName()
 //"whonamesfileslikethisseriously.txt"
 
-""who<names>files\\|/like:this*seriously?\0.txt".toFileName(false, '-')
+"who<names>files\\|/like:this*seriously?\0.txt".toFileName(false, '-')
 //"who-names-files---like-this-seriously--.txt"
 
 "Holiday trip!.ppt".toFileName(true)
