@@ -1,10 +1,10 @@
-#stringops.js
+# stringops.js
 
 stringops.js is a collection of string utility functions. It extends the default String object to remain simple and convenient.
 
 Install the library using `bower install stringops`, and the methods below will become available on any String object. See the *Examples* below for more comprehensive examples.
 
-##API
+## API
 
 * String.prototype.**noAccents**(*removeOtherUnicodeCharacters=false*, *replacementCharacter=""*)
 	* *removeOtherUnicodeCharacters*: whether to remove unicode characters that are not mapped to a non-accented characters. This includes all non-ascii characters.
@@ -18,7 +18,7 @@ Install the library using `bower install stringops`, and the methods below will 
 	* *maxLength*: the maximum length of the slug.
 	* *replacementCharacter*: the replacement character(s) to use for invalid characters.
 
-##Examples
+## Examples
 
 The examples below cover the functionality of stringops.js:
 
@@ -51,6 +51,6 @@ The examples below cover the functionality of stringops.js:
 //"Holiday-trip-.ppt"
 ```
 
-##Warning
+## Warning
 
 This is a collection of utilities used in [Markdown Notes](http://markdownnotes.com). It is not meant to be an extensive library of all string functions a developer should need.
